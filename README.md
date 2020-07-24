@@ -9,8 +9,8 @@
 ## Table of Contents 
 
   1. [Overview](#Overview)
-  2. [Question and Hypothesis](#Question\ and\ Hypothesis)
-  3. [Exploratory Data Analysis](#Exploratory\ Data\ Analysis)
+  2. [Question and Hypothesis](#Question-and-Hypothesis)
+  3. [Exploratory Data Analysis](#Exploratory-Data-Analysis)
   4. [Visualization](#Visualization)
   5. [Conclusion](#Conclusion)
   6. [Credits](#Credits)
