@@ -17,6 +17,24 @@ working_df = working_df.iloc[:,1:]
 
 df = working_df.copy()
 
+total_home_yellow = sum(df.HY)
+total_away_yellow = sum(df.AY)
+total_home_red = sum(df.HR)
+total_away_red = sum(df.AR)
+
+plt.style.use('seaborn-dark')
+fig = plt.figure(figsize=(16,7))
+fig.patch.set_facecolor('gainsboro')
+ax1 = fig.add_subplot(121)
+ax2 = fig.add_subplot(122)
+
+ax1.pie([total_home_yellow,total_away_yellow],labels=['Home Yellow','Away Yellow'],colors=['goldenrod','darkgoldenrod'],autopct='%1.1f%%',startangle=90)
+ax2.pie([total_home_red, total_away_red],labels=['Home Red','Away Red'],colors=['firebrick','maroon'],autopct='%1.1f%%', startangle=90)
+
+plt.tight_layout()
+plt.savefig('../images/total_card_pie')
+plt.show()
+
 def yearlyDf(base_df,yrs): # splits the data frame into seasons and outputs the files as csv's that can be loaded into season by season data frames
     for yr in yrs:
         start = str(yr)+'-08-01'
@@ -124,11 +142,6 @@ away_yellow_std = np.std(df.AY)
 home_red_std = np.std(df.HR)
 away_red_std = np.std(df.AR)
 
-total_home_yellow = sum(df.HY)
-total_away_yellow = sum(df.AY)
-total_home_red = sum(df.HR)
-total_away_red = sum(df.AR)
-
 hnorm_yell = stats.norm(home_yellow_mean,home_yellow_std) # normal distribution of home yellow cards
 anorm_yell = stats.norm(away_yellow_mean,away_yellow_std) # normal distribution of away yellow cards
 delta_yell = hnorm_yell.cdf(away_yellow_mean) - hnorm_yell.cdf(home_yellow_mean) # difference in the area of the distribution between the means of home and away yellows
@@ -155,13 +168,13 @@ ax.axvline(home_red_mean,color='firebrick',linestyle='--',label='Average Home Re
 ax.axvline(away_red_mean,color='maroon',linestyle='-.',label='Average Away Red Cards Given per Match')
 
 ax.set_xlabel('Home Red Cards Received Distribution (Seasons 2000 - 2020)')
-ax.set_ylabel('Probability Distribution')
+ax.set_ylabel('Probability Density')
 ax.fill_between(x, hnorm_red.pdf(x), 0, 
                    where=( (x <= away_red_mean) & (x>=home_red_mean)),
                    color="darkred", alpha=0.2)
 
 ax.arrow(-0.5,0.5,0.35,-0.1,color='firebrick', width=0.05)
-ax.text(-1,0.65,f'This difference is only {round(delta_red*100,3)}%',color='maroon')
+ax.text(-1,0.65,f'This difference in means\n is very small',color='maroon',fontsize=20)
 
 plt.legend()
 plt.savefig('/home/josh/Documents/dsi/caps/cap1/images/Home_red_normdist.jpeg')
@@ -183,7 +196,7 @@ ax.fill_between(x, hnorm_yell.pdf(x), 0,
                    where=( (x <= away_yellow_mean) & (x>=home_yellow_mean)),
                    color="orange", alpha=0.2)
 ax.arrow(3.5,0.15,-1.55,-0.05,color='darkgoldenrod', width=0.04)
-ax.text(3.6,0.175,f'This is {round(delta_yell*100,3)}%, but\n not enough to be\n significant',color='darkgoldenrod',fontsize=20)
+ax.text(3.6,0.175,f'This difference between\n average away yellows\n and home yellows is\n not large',color='darkgoldenrod',fontsize=20)
 plt.legend(loc='upper left')
 plt.savefig('/home/josh/Documents/dsi/caps/cap1/images/Home_yellow_normdist.jpeg')
 plt.show()
