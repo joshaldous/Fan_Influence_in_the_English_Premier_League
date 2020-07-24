@@ -1,6 +1,6 @@
 from English Premier League Results (00-01 to 19-20) Kaggle
 
-Date - dd/mm/yy
+Date - yy/dd/mm
 home - home team
 away - away team
 fthg - full time home goals
@@ -9,7 +9,7 @@ ftr - full time result
 hthg - half time home team goals
 htag - half time away tema goals
 htr - half time result
-ref - 
+ref_name - match referee name 
 hs - home shots
 as - away shots
 hst - home team shots on target
