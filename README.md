@@ -41,7 +41,7 @@ Other than that, the data was solid.  There were about 25 rows of Nan values at 
 As a general formula, home teams tend to attack and be on the front foot more, while away teams try to keep an organized, defensive shape and patiently wait for oppurtunities to score.  At least that is how it was for most of the 20th century.  That formula is shifting to more of one where certain teams play certain ways regardless of where the match is held, but for at least the early part of my data, that could be considered to be a factor.  However, even if this is the case, there is still plenty of time in a match for home team players to be booked.  There are fast-breaking counter-attacks, tired-legs and tired-minds which can lead to rash decisions, and no team controls the ball for 90% of 90 minutes. So, straight away I wanted to see if the number of cards given to home teams was about equal to the number of cards given to away teams as a starting point.  
 
 <p align="center">
-  <img width="900" height="450" src="./images/total_card_pie.png">
+  <img width="850" height="425" src="./images/total_card_pie.png">
 </p>
 
 So you are more likely to be booked on the road. This got me a bit more interested and so I started to dig into the data more.  What do the scatter plots look like when you plot the home cards against the away cards?  I added in a diagonal line to show where we would expect the numbers to be if the distribution was truly random.
